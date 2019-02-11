@@ -22,8 +22,11 @@ class HomeTableViewController: UITableViewController {
     }
 
     @objc func loadData(){
+        
+        numberOfTweets = 20
+        
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let params = ["count":10]
+        let params = ["count":numberOfTweets]
         
         self.tweetArray.removeAll()
         TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: params, success: { (tweets:[NSDictionary]) in
@@ -36,6 +39,29 @@ class HomeTableViewController: UITableViewController {
             print("cannot load tweets")
         })
     }
+    
+    func loadMoreData(){
+        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        numberOfTweets += 20
+        let params = ["count":numberOfTweets]
+        
+        self.tweetArray.removeAll()
+        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: params, success: { (tweets:[NSDictionary]) in
+            for tweet in tweets{
+                self.tweetArray.append(tweet)
+            }
+            self.tableView.reloadData()
+        }, failure: { (Error) in
+            print("cannot load tweets")
+        })
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == tweetArray.count{
+            self.loadMoreData()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
