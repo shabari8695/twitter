@@ -12,13 +12,16 @@ class HomeTableViewController: UITableViewController {
 
     var tweetArray = [NSDictionary]()
     var numberOfTweets:Int!
+    let myRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadData()
+        myRefreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
     }
 
-    func loadData(){
+    @objc func loadData(){
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let params = ["count":10]
         
@@ -28,6 +31,7 @@ class HomeTableViewController: UITableViewController {
                 self.tweetArray.append(tweet)
             }
             self.tableView.reloadData()
+            self.myRefreshControl.endRefreshing()
         }, failure: { (Error) in
             print("cannot load tweets")
         })
@@ -36,7 +40,16 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         let tweet = tweetArray[indexPath.row]
-        cell.tweetLabel.text = tweet["text"] as? String
+        let user = tweet["user"] as! NSDictionary
+        cell.tweetLabel.text = tweet["text"] as! String
+        cell.nameLabel.text = user["name"] as! String
+        
+        let profileUrl = URL(string: (user["profile_image_url"] as! String))
+        let data = try?Data(contentsOf: profileUrl!)
+        
+        if let imageData = data{
+            cell.photoView.image = UIImage(data: imageData)
+        }
         
         return cell
     }
