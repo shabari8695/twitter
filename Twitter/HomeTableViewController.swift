@@ -10,16 +10,37 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
 
+    var tweetArray = [NSDictionary]()
+    var numberOfTweets:Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.loadData()
     }
 
+    func loadData(){
+        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let params = ["count":10]
+        
+        self.tweetArray.removeAll()
+        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: params, success: { (tweets:[NSDictionary]) in
+            for tweet in tweets{
+                self.tweetArray.append(tweet)
+            }
+            self.tableView.reloadData()
+        }, failure: { (Error) in
+            print("cannot load tweets")
+        })
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        
+        let tweet = tweetArray[indexPath.row]
+        cell.tweetLabel.text = tweet["text"] as? String
+        
+        return cell
+    }
+    
     // MARK: - Table view data source
 
     @IBAction func logoutAction(_ sender: Any) {
@@ -29,12 +50,12 @@ class HomeTableViewController: UITableViewController {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tweetArray.count
     }
 
     /*

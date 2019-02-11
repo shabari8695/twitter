@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="103" id="2P1-nR-JM8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="103" id="2P1-nR-JM8" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2P1-nR-JM8" id="lza-wO-pQM">
@@ -61,33 +61,42 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brx-2i-1m5">
                                             <rect key="frame" x="16" y="11" width="65" height="65"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="P5f-VR-qpM"/>
                                                 <constraint firstAttribute="width" constant="65" id="QxD-rR-QV6"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiZ-b1-FaX">
-                                            <rect key="frame" x="89" y="11" width="215" height="21"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Shabari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiZ-b1-FaX">
+                                            <rect key="frame" x="89" y="11" width="56.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKh-JS-72p">
-                                            <rect key="frame" x="89" y="41" width="215" height="51"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hello World" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKh-JS-72p">
+                                            <rect key="frame" x="89" y="33" width="215" height="59"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="DKh-JS-72p" firstAttribute="leading" secondItem="brx-2i-1m5" secondAttribute="trailing" constant="8" id="6SX-d9-F1l"/>
                                         <constraint firstItem="brx-2i-1m5" firstAttribute="top" secondItem="lza-wO-pQM" secondAttribute="topMargin" id="FCU-Ra-sc1"/>
                                         <constraint firstItem="brx-2i-1m5" firstAttribute="leading" secondItem="lza-wO-pQM" secondAttribute="leadingMargin" id="I6Z-fx-Ifj"/>
+                                        <constraint firstItem="DKh-JS-72p" firstAttribute="trailing" secondItem="lza-wO-pQM" secondAttribute="trailingMargin" id="KQ0-IC-777"/>
+                                        <constraint firstItem="DKh-JS-72p" firstAttribute="bottom" secondItem="lza-wO-pQM" secondAttribute="bottomMargin" id="LYb-3F-eXr"/>
+                                        <constraint firstItem="DKh-JS-72p" firstAttribute="top" secondItem="OiZ-b1-FaX" secondAttribute="bottom" constant="4" id="PF5-df-bLq"/>
                                         <constraint firstItem="OiZ-b1-FaX" firstAttribute="top" secondItem="lza-wO-pQM" secondAttribute="topMargin" id="b5a-id-umx"/>
                                         <constraint firstItem="brx-2i-1m5" firstAttribute="top" secondItem="lza-wO-pQM" secondAttribute="topMargin" id="raE-iE-8rV"/>
                                         <constraint firstItem="OiZ-b1-FaX" firstAttribute="leading" secondItem="brx-2i-1m5" secondAttribute="trailing" constant="8" id="yne-Wl-miG"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="OiZ-b1-FaX" id="eR1-8V-fI5"/>
+                                    <outlet property="photoView" destination="brx-2i-1m5" id="FPG-en-Rrq"/>
+                                    <outlet property="tweetLabel" destination="DKh-JS-72p" id="thV-LO-QQF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
