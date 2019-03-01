@@ -55,11 +55,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="194" id="2P1-nR-JM8" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="194"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="210" id="2P1-nR-JM8" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="210"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2P1-nR-JM8" id="lza-wO-pQM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="193.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="209.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brx-2i-1m5">
@@ -83,7 +83,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lg-Rp-TFc" userLabel="RetweetButton">
-                                            <rect key="frame" x="242" y="143" width="30" height="30"/>
+                                            <rect key="frame" x="242" y="168" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="8n2-Ju-oBs"/>
                                                 <constraint firstAttribute="width" constant="30" id="QEe-yi-vCy"/>
@@ -94,7 +94,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgZ-8P-zUZ" userLabel="FavButton">
-                                            <rect key="frame" x="282" y="143" width="30" height="30"/>
+                                            <rect key="frame" x="282" y="168" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="LFQ-WG-XyD"/>
                                                 <constraint firstAttribute="height" constant="30" id="fYg-Mv-U3m"/>
@@ -114,7 +114,7 @@
                                         <constraint firstItem="CgZ-8P-zUZ" firstAttribute="top" secondItem="0Lg-Rp-TFc" secondAttribute="top" id="Kn8-N0-rMc"/>
                                         <constraint firstItem="CgZ-8P-zUZ" firstAttribute="leading" secondItem="0Lg-Rp-TFc" secondAttribute="trailing" constant="10" id="Xs7-vR-sSX"/>
                                         <constraint firstItem="OiZ-b1-FaX" firstAttribute="top" secondItem="lza-wO-pQM" secondAttribute="topMargin" id="b5a-id-umx"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0Lg-Rp-TFc" secondAttribute="bottom" constant="10" id="ecR-ES-LJB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Lg-Rp-TFc" secondAttribute="bottom" constant="1" id="ecR-ES-LJB"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="DKh-JS-72p" secondAttribute="trailing" constant="8" id="hXV-NV-IaX"/>
                                         <constraint firstItem="DKh-JS-72p" firstAttribute="leading" secondItem="OiZ-b1-FaX" secondAttribute="leading" id="lBj-Op-cjC"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="OiZ-b1-FaX" secondAttribute="trailing" constant="8" id="saC-7K-ojt"/>
